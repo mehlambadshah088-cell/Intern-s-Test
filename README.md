@@ -19,7 +19,7 @@ Your job is to **find and fix them**.
 
 ## Rules
 
-- You have **2 hours**
+
 - Fix the bugs **directly in the files** — no framework rewrites
 - Document each bug you find in a `FIXES.md` file you create:
   - What the bug is
