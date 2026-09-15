@@ -36,8 +36,5 @@ Your job is to **find and fix them**.
 - Do you understand the **security implications** of certain bugs?
 - Do you fix things the **right way** or just make it "stop throwing errors"?
 
-## Hint
-
-There are roughly **7–8 issues** total. Some are obvious. Some require you to actually **use the app** (open it in a browser and test it). One or two require deeper knowledge of how browsers and JavaScript work.
 
 Good luck. 🚀
