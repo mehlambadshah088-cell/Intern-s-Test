@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- [BUG-E2] Missing viewport meta tag width — it reads "widht" instead of "width".
+       This breaks responsive layout on mobile devices entirely. -->
+  <meta name="viewport" content="widht=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <h1>Welcome back 👋</h1>
+      <p class="subtitle">Sign in to your TaskFlow workspace</p>
+
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <!-- [BUG-E3] Input name attribute is empty string — the field will NOT be
+               included in form data submitted to a server. Any backend validation
+               or FormData serialization will silently skip this field. -->
+          <input
+            type="email"
+            id="email"
+            name=""
+            placeholder="you@company.com"
+            autocomplete="email"
+            required
+          />
+          <span class="form-error" id="emailError">Please enter a valid email.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          />
+          <span class="form-error" id="passwordError">Password must be at least 8 characters.</span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <label style="display:flex;align-items:center;gap:0.5rem;text-transform:none;font-weight:400;font-size:0.85rem;color:var(--text);">
+            <input type="checkbox" name="remember" style="width:auto;" />
+            Remember me
+          </label>
+          <a href="#" style="font-size:0.85rem;color:var(--primary);">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+
+      </form>
+
+      <p class="mt-2 text-muted" style="font-size:0.85rem;text-align:center;">
+        Demo credentials: <strong>admin@taskflow.io</strong> / <strong>admin123</strong>
+      </p>
+
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

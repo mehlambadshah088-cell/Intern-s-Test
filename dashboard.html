@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a class="logo" href="dashboard.html">⚡ TaskFlow</a>
+    <div class="navbar-actions">
+      <span id="welcomeMsg" style="font-size:0.875rem;color:var(--muted);"></span>
+      <div class="avatar" id="avatarBtn" title="Your account">?</div>
+      <button class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active">🏠 Dashboard</a></li>
+        <li><a href="#">✅ My Tasks</a></li>
+        <li><a href="#">📊 Analytics</a></li>
+        <li><a href="#">👥 Team</a></li>
+        <li><a href="#">⚙️ Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main-content">
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Tasks</div>
+          <div class="stat-value" id="statTotal">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value" id="statDone" style="color:var(--success)">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">In Progress</div>
+          <div class="stat-value" id="statPending" style="color:var(--primary)">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">High Priority</div>
+          <div class="stat-value" id="statHigh" style="color:var(--danger)">0</div>
+        </div>
+      </div>
+
+      <!-- TASK SECTION -->
+      <div class="section-header">
+        <h2>📋 Tasks</h2>
+        <button class="btn btn-primary btn-sm" id="addTaskBtn">+ Add Task</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search tasks…" />
+      </div>
+
+      <div class="task-list" id="taskList">
+        <!-- Tasks rendered by JS -->
+      </div>
+
+      <!-- ASYNC DEMO SECTION -->
+      <div class="section-header mt-2">
+        <h2>🌐 Remote Tasks (API)</h2>
+        <button class="btn btn-outline btn-sm" id="fetchTasksBtn">Fetch from API</button>
+      </div>
+      <div id="remoteTaskList" class="task-list">
+        <p class="text-muted" style="font-size:0.875rem;">Click "Fetch from API" to load remote tasks.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ADD TASK MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h2>Add New Task</h2>
+      <form id="addTaskForm">
+        <div class="form-group">
+          <label for="taskTitle">Task Title</label>
+          <input type="text" id="taskTitle" name="taskTitle" placeholder="e.g. Fix login bug" required />
+        </div>
+        <div class="form-group">
+          <label for="taskPriority">Priority</label>
+          <select id="taskPriority" name="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="taskAssignee">Assignee</label>
+          <input type="text" id="taskAssignee" name="taskAssignee" placeholder="Team member name" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Create Task</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
